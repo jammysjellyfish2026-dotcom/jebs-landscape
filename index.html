@@ -264,15 +264,7 @@
       display: flex; align-items: center; gap: 10px;
     }
     .header-cta:hover { background: var(--navy-mid); transform: translateY(-2px); }
-    .header-cta::before {
-      content: 'TEXT';
-      background: var(--grass-green);
-      color: var(--navy-deep);
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-size: 11px;
-      font-weight: 800;
-    }
+
 
     /* Hero */
     .hero {
@@ -333,27 +325,8 @@
     .trust-item { display: flex; align-items: center; gap: 8px; font-weight: 500; }
     .trust-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--grass-green-glow); }
 
-    /* Trust badges row */
-    .trust-badges {
-      display: flex; gap: 24px; flex-wrap: wrap; justify-content: center;
-      margin-top: 24px; padding-top: 24px;
-      border-top: 1px solid var(--border-subtle);
-    }
-    .trust-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--bg-surface); border: 1px solid var(--border-standard);
-      padding: 10px 16px; border-radius: var(--radius-pill);
-      font-size: 13px; font-weight: 500; color: var(--text-secondary);
-      transition: all 0.2s;
-    }
-    .trust-badge:hover {
-      border-color: var(--grass-green-glow);
-      color: var(--text-primary);
-    }
-    .trust-badge svg { width: 18px; height: 18px; stroke: var(--grass-green-glow); }
-
     /* Section Base */
-    section { padding: 100px 40px; max-width: 1400px; margin: 0 auto; }
+    section { padding: 80px 40px; max-width: 1400px; margin: 0 auto; }
     .section-header { text-align: center; margin-bottom: 60px; }
     .section-label {
       font-family: var(--font-display);
@@ -440,6 +413,13 @@
       border: 1px solid var(--border-bright);
       background: linear-gradient(135deg, var(--navy-mid) 0%, var(--bg-deep) 100%);
       position: relative;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .about-image::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='none' stroke='%23287a24' stroke-width='2' stroke-dasharray='8,4' opacity='0.15'/%3E%3C/svg%3E");
+      background-size: 200px;
+      opacity: 0.3;
     }
     .about-image img { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; }
     .about-image::after {
@@ -453,27 +433,7 @@
     .stat-value { font-family: var(--font-display); font-size: 36px; font-weight: 700; color: var(--sun-gold); line-height: 1; }
     .stat-label { font-size: 13px; color: var(--text-muted); margin-top: 8px; font-weight: 500; }
 
-    /* Portfolio / Gallery */
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 16px;
-    }
-    .gallery-item {
-      aspect-ratio: 4/3; border-radius: 14px; overflow: hidden;
-      border: 1px solid var(--border-standard); position: relative;
-      background: linear-gradient(135deg, var(--navy-mid) 0%, var(--bg-deep) 100%);
-    }
-    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
-    .gallery-item:hover img { transform: scale(1.05); }
-    .gallery-overlay {
-      position: absolute; inset: 0; background: rgba(6,13,26,0.9);
-      display: flex; flex-direction: column; justify-content: center; align-items: center;
-      gap: 8px; opacity: 0; transition: opacity 0.3s;
-    }
-    .gallery-item:hover .gallery-overlay { opacity: 1; }
-    .gallery-overlay h4 { font-family: var(--font-display); font-size: 18px; font-weight: 600; }
-    .gallery-overlay span { font-size: 13px; color: var(--grass-green-glow); font-weight: 500; }
+
 
     /* Testimonials */
     .testimonials { background: radial-gradient(ellipse at center, rgba(40,122,36,0.08) 0%, transparent 70%); }
@@ -572,44 +532,9 @@
       border-top: 1px solid var(--border-standard); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
     }
     .footer-bottom p { color: var(--text-muted); font-size: 13px; }
-    .social { display: flex; gap: 16px; }
-    .social a {
-      width: 40px; height: 40px; border-radius: 50%;
-      background: var(--bg-surface); border: 1px solid var(--border-standard);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--text-muted); transition: all 0.2s;
-    }
-    .social a:hover { background: var(--grass-green); border-color: var(--grass-green); color: white; }
+.social { display: none; }
 
-    /* Parallax Showcase */
-    .parallax-showcase {
-      padding: 0; overflow: hidden; position: relative;
-    }
-    .parallax-layers {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
-      height: 50vh; min-height: 400px;
-    }
-    .parallax-layer {
-      position: relative; background-size: cover; background-position: center;
-      background-attachment: fixed; transition: background-position 0.1s ease-out;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .parallax-layer::before {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(180deg, rgba(6,13,26,0.7) 0%, rgba(6,13,26,0.4) 50%, rgba(6,13,26,0.8) 100%);
-    }
-    .parallax-content {
-      position: relative; z-index: 1; text-align: center; padding: 20px;
-      color: white; max-width: 300px;
-    }
-    .parallax-content h3 {
-      font-family: var(--font-display); font-size: clamp(20px, 3vw, 28px);
-      font-weight: 600; margin-bottom: 8px; text-shadow: 0 2px 12px rgba(0,0,0,0.8);
-    }
-    .parallax-content p {
-      font-size: clamp(14px, 1.8vw, 16px); color: var(--text-secondary);
-      text-shadow: 0 1px 8px rgba(0,0,0,0.6);
-    }
+
 
     /* Scroll Progress Bar */
     .scroll-progress {
@@ -659,45 +584,7 @@
        ENHANCED FEATURES - Over the top polish
        ======================================== */
 
-    /* Custom Cursor */
-    .custom-cursor {
-      position: fixed; top: 0; left: 0; width: 32px; height: 32px;
-      pointer-events: none; z-index: 10000; mix-blend-mode: difference;
-      transition: transform 0.08s ease-out, width 0.2s, height 0.2s, opacity 0.2s;
-      transform: translate(-50%, -50%);
-    }
-    .custom-cursor::before {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(135deg, var(--grass-green) 0%, var(--sun-gold) 100%);
-      border-radius: 50% 50% 50% 0; transform: rotate(-45deg);
-      box-shadow: 0 0 16px rgba(76, 175, 80, 0.6), 0 0 32px rgba(245, 183, 0, 0.4);
-      animation: cursor-breathe 2s ease-in-out infinite;
-    }
-    .custom-cursor::after {
-      content: ''; position: absolute; top: 50%; left: 50%; width: 8px; height: 8px;
-      background: white; border-radius: 50%; transform: translate(-50%, -50%);
-      opacity: 0.8;
-    }
-    @keyframes cursor-breathe { 0%, 100% { transform: rotate(-45deg) scale(1); } 50% { transform: rotate(-45deg) scale(1.15); } }
-    .custom-cursor.trail { opacity: 0.4; transform: translate(-50%, -50%) scale(0.6); }
-    .custom-cursor.click { transform: translate(-50%, -50%) scale(0.8); }
-    .custom-cursor.hover { width: 56px; height: 56px; }
-    .custom-cursor.hover::before { border-radius: 50%; transform: rotate(0deg); }
-    body.cursor-active { cursor: none; }
-    body.cursor-active a, body.cursor-active button, body.cursor-active .service-card,
-    body.cursor-active .gallery-item, body.cursor-active .testimonial,
-    body.cursor-active input, body.cursor-active select, body.cursor-active .magnetic {
-      cursor: none !important;
-    }
 
-    /* Cursor Trail Particles */
-    .cursor-trail {
-      position: fixed; width: 8px; height: 8px; border-radius: 50%;
-      pointer-events: none; z-index: 9999; opacity: 0;
-      background: radial-gradient(circle, var(--sun-gold) 0%, var(--grass-green) 70%, transparent 100%);
-      animation: trail-fade 0.6s ease-out forwards;
-    }
-    @keyframes trail-fade { 0% { opacity: 0.6; transform: scale(1); } 100% { opacity: 0; transform: scale(0.3); } }
 
     /* 3D Tilt Effect */
     .tilt-card {
@@ -706,47 +593,9 @@
     }
     .tilt-card:hover { box-shadow: var(--shadow-lg); }
 
-    /* Page Load Transition */
-    .page-loader {
-      position: fixed; inset: 0; z-index: 20000;
-      background: var(--bg-deep);
-      display: flex; align-items: center; justify-content: center;
-      flex-direction: column; gap: 24px;
-      transition: opacity 0.6s ease, visibility 0.6s ease;
-    }
-    .page-loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
-    .loader-logo {
-      font-family: var(--font-serif); font-size: 48px; font-weight: 600;
-      background: linear-gradient(135deg, var(--grass-green) 0%, var(--sun-gold) 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-      letter-spacing: 0.5px;
-    }
-    .loader-progress { width: 200px; height: 3px; background: var(--bg-surface); border-radius: 100px; overflow: hidden; }
-    .loader-bar { height: 100%; width: 0%; background: linear-gradient(90deg, var(--grass-green) 0%, var(--sun-gold) 100%); border-radius: 100px; animation: loader-fill 1.2s ease-out forwards; }
-    @keyframes loader-fill { 0% { width: 0%; } 100% { width: 100%; } }
-    .loader-text { font-size: 13px; color: var(--text-muted); font-family: var(--font-display); letter-spacing: 0.2em; text-transform: uppercase; }
 
-    /* Before/After Slider */
-    .before-after { position: relative; width: 100%; height: 100%; border-radius: 14px; overflow: hidden; }
-    .before-after img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-    .before-after .after-image { clip-path: inset(0 50% 0 0); }
-    .before-after .slider-handle {
-      position: absolute; top: 0; bottom: 0; left: 50%; width: 4px;
-      background: linear-gradient(180deg, var(--grass-green) 0%, var(--sun-gold) 100%);
-      transform: translateX(-50%); z-index: 10; cursor: ew-resize;
-      box-shadow: 0 0 16px rgba(76, 175, 80, 0.6), 0 0 32px rgba(245, 183, 0, 0.4);
-    }
-    .before-after .slider-handle::before,
-    .before-after .slider-handle::after {
-      content: ''; position: absolute; top: 50%; left: 50%; width: 24px; height: 24px;
-      border: 2px solid white; border-radius: 50%; transform: translate(-50%, -50%);
-      background: var(--bg-deep); box-shadow: 0 2px 8px rgba(0,0,0,0.4);
-    }
-    .before-after .slider-handle::after {
-      width: 12px; height: 12px; border: none; background: var(--grass-green);
-    }
-    .before-after .labels { position: absolute; inset: 0; display: flex; justify-content: space-between; padding: 16px; pointer-events: none; z-index: 5; }
-    .before-after .labels span { background: rgba(6,13,26,0.85); padding: 6px 12px; border-radius: var(--radius-pill); font-size: 12px; font-weight: 600; color: white; backdrop-filter: blur(8px); border: 1px solid var(--border-standard); }
+
+
 
     /* Floating Action Button */
     .fab {
@@ -877,7 +726,6 @@
     }
     @media (max-width: 768px) {
       header { padding: 0 20px; }
-      nav { display: none; }
       .footer-grid { grid-template-columns: 1fr; }
       .footer-brand { grid-column: auto; }
       section { padding: 60px 20px; }
@@ -909,15 +757,7 @@
 </head>
 <body>
 
-  <!-- Page Loader -->
-  <div class="page-loader" id="page-loader">
-    <div class="loader-logo">JEB'S LANDSCAPE</div>
-    <div class="loader-progress"><div class="loader-bar"></div></div>
-    <div class="loader-text">Loading experience...</div>
-  </div>
 
-  <!-- Custom Cursor -->
-  <div class="custom-cursor" id="custom-cursor"></div>
 
   <!-- Background Canvas -->
   <div class="bg-canvas"></div>
@@ -930,12 +770,17 @@
       <span class="logo-mark">JL</span>
       JEB'S LANDSCAPE
     </div>
-    <nav>
+    <nav id="main-nav">
       <a href="#services">Services</a>
-      
       <a href="#about">Our Story</a>
-      
     </nav>
+    <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
     <div class="theme-toggle" id="theme-toggle" data-theme="dark">
       <button class="theme-btn active" data-theme="dark">Dark</button>
       <button class="theme-btn" data-theme="light">Light</button>
@@ -951,6 +796,7 @@
     <p class="hero-subtitle hero-parallax-layer" data-depth="0.15">A Healthy Lawn. A Better Home.</p>
     <div class="hero-ctas">
       <a href="#estimateForm" class="btn-primary magnetic" style="background: linear-gradient(135deg, var(--grass-green) 0%, var(--grass-green-light) 100%);">Get Free Estimate</a>
+      <a href="tel:2052818448" class="btn-secondary magnetic">Call 205-281-8448</a>
     </div>
     <div class="trust-indicators">
       <div class="trust-item"><span class="trust-dot"></span> Professional Mowing</div>
@@ -958,9 +804,7 @@
       <div class="trust-item"><span class="trust-dot"></span> Clean, Neat & Reliable</div>
       <div class="trust-item"><span class="trust-dot"></span> Boost Curb Appeal</div>
     </div>
-    <div class="trust-badges">
-      <div class="trust-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M9 11l3 3L22 4"/></svg> Licensed & Insured</div>
-    </div>
+
   </section>
 
   <!-- Services -->
@@ -1245,7 +1089,7 @@
         document.addEventListener('mouseenter', () => { cursorVisible = true; cursor.style.opacity = '1'; });
       
         // Hover detection for interactive elements
-        const interactiveSelectors = 'a, button, .service-card, .gallery-item, input, select, .magnetic, .fab, .fab-item, .theme-btn, .expand-btn, .slider-handle';
+        const interactiveSelectors = 'a, button, .service-card, input, select, .magnetic, .fab, .fab-item, .theme-btn, .expand-btn';
         document.addEventListener('mouseover', (e) => {
           if (e.target.closest(interactiveSelectors)) {
             cursor.classList.add('hover');
@@ -1475,7 +1319,7 @@
           });
         }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
       
-        document.querySelectorAll('.reveal-up, .reveal-scale, .reveal-fade, .service-card, .gallery-item, .stat, .section-header').forEach(el => {
+        document.querySelectorAll('.reveal-up, .reveal-scale, .reveal-fade, .service-card, .stat, .section-header').forEach(el => {
           if (!el.classList.contains('reveal-up') && !el.classList.contains('reveal-scale') && !el.classList.contains('reveal-fade')) {
             el.classList.add('reveal-up');
           }
@@ -1611,7 +1455,6 @@
       // INIT ALL
       document.addEventListener('DOMContentLoaded', () => {
         initTiltCards();
-        initBeforeAfterSliders();
         initFAB();
         initThemeToggle();
         initHeroParallax();
