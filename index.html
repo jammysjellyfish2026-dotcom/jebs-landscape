@@ -1025,16 +1025,7 @@
       // ENHANCED JAVASCRIPT - All new features
       // ========================================
 
-      // 1. PAGE LOADER
-      window.addEventListener('load', () => {
-        const loader = document.getElementById('page-loader');
-        setTimeout(() => {
-          loader.classList.add('hidden');
-          document.body.classList.add('loaded');
-          // Start cursor after loader
-          initCustomCursor();
-        }, 1400);
-      });
+
 
       // 2. CUSTOM CURSOR WITH TRAIL
       let cursor = null, cursorTrail = [], mouseX = 0, mouseY = 0, cursorVisible = false;
