@@ -720,8 +720,6 @@
       .about-content { grid-template-columns: 1fr; gap: 40px; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
       .footer-brand { grid-column: span 2; }
-      .parallax-layers { grid-template-columns: 1fr; height: auto; min-height: auto; }
-      .parallax-layer { height: 45vh; min-height: 300px; background-attachment: scroll; }
       .service-card.expanded { grid-column: auto; }
     }
     @media (max-width: 768px) {
@@ -743,12 +741,8 @@
     @media (prefers-reduced-motion: reduce) {
       .particle { animation: none; opacity: 0; }
       .service-card:hover { transform: none; }
-      .gallery-item:hover img { transform: none; }
       .tilt-card { transition: none; }
-      .cursor-trail { display: none; }
-      .custom-cursor { animation: none; }
       .reveal-up, .reveal-scale, .reveal-fade { opacity: 1; transform: none; transition: none; }
-      .loader-bar { animation: none; width: 100%; }
       .fab { animation: none; opacity: 1; transform: scale(1); }
       .fab-item { animation: none; opacity: 1; transform: none; }
       * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
