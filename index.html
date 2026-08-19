@@ -619,17 +619,7 @@
       box-shadow: 0 0 12px var(--accent-glow), 0 0 24px var(--accent-glow-gold);
     }
 
-    /* Client Logo Marquee */
-    .marquee { overflow: hidden; white-space: nowrap; position: relative; padding: 20px 0; border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); }
-    .marquee::before, .marquee::after { content: ''; position: absolute; top: 0; bottom: 0; width: 100px; z-index: 1; pointer-events: none; }
-    .marquee::before { left: 0; background: linear-gradient(90deg, var(--bg-deep) 0%, transparent 100%); }
-    .marquee::after { right: 0; background: linear-gradient(270deg, var(--bg-deep) 0%, transparent 100%); }
-    .marquee-track { display: inline-flex; gap: 40px; animation: marquee 30s linear infinite; align-items: center; }
-    .marquee:hover .marquee-track { animation-play-state: paused; }
-    .marquee-item { flex-shrink: 0; display: flex; align-items: center; gap: 12px; padding: 8px 16px; background: var(--bg-surface); border: 1px solid var(--border-standard); border-radius: var(--radius-pill); color: var(--text-secondary); font-size: 13px; font-weight: 500; transition: all 0.2s; }
-    .marquee-item:hover { border-color: var(--grass-green-glow); color: var(--text-primary); transform: translateY(-2px); }
-    .marquee-item svg { width: 28px; height: 28px; stroke: var(--grass-green-glow); }
-    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
 
     /* Magnetic Button Effect */
     .magnetic { position: relative; transition: transform 0.15s ease-out; }
@@ -837,7 +827,7 @@
     [data-theme="light"] .form-group input, [data-theme="light"] .form-group select { background: var(--bg-deep); border: 1px solid var(--border-standard); color: var(--text-primary); }
     [data-theme="light"] footer { background: var(--bg-panel); border-top: 1px solid var(--border-standard); }
 
-    [data-theme="light"] .marquee-item { background: var(--bg-surface); border: 1px solid var(--border-standard); }
+
     [data-theme="light"] .fab { background: linear-gradient(135deg, var(--grass-green) 0%, var(--forest-green) 100%); }
     [data-theme="light"] .theme-toggle { background: var(--bg-surface); border: 1px solid var(--border-standard); }
 
@@ -1048,9 +1038,7 @@
             <li><strong>Pet friendly:</strong> Crews trained on dog safety, gates secured</li>
             <li><strong>Direct line to Jeb:</strong> No call center, no ticket numbers</li>
           </ul>
-          <div style="margin-top: 16px; padding: 16px; background: rgba(82,153,211,0.1); border-radius: var(--radius-md); border: 1px solid var(--border-standard);">
-            <strong style="color: var(--sky-blue);">98% Retention Rate</strong> — clients stay because we deliver
-          </div>
+
         </div>
       </article>
       <article class="service-card tilt-card reveal-up stagger-4">
@@ -1533,13 +1521,7 @@
         scrollProgress.style.transform = `scaleX(${progress})`;
       });
 
-      // 13. MARQUEE
-      const marqueeTrack = document.getElementById('marquee-track');
-      if (marqueeTrack) {
-        const originalItems = marqueeTrack.innerHTML;
-        marqueeTrack.innerHTML = originalItems + originalItems;
-        marqueeTrack.style.width = 'max-content';
-      }
+
 
       // 14. MAGNETIC BUTTONS
       document.querySelectorAll('.btn-primary, .btn-secondary, .header-cta, .fab').forEach(btn => {
