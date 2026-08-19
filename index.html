@@ -14,96 +14,97 @@
   <!-- JSON-LD LocalBusiness Schema -->
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "JEB'S LANDSCAPE AND LAWN",
-    "image": "https://100.109.177.22:8000/img_8d54aa870b1f.jpg",
-    "telephone": "205-281-8448",
-    "email": "hello@jebslandscape.com",
-    "url": "https://100.109.177.22:8000/jebs_landscape_demo.html",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Hoover, AL 35216",
-      "addressLocality": "Hoover",
-      "addressRegion": "AL",
-      "postalCode": "35216",
-      "addressCountry": "US"
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "JEB'S LANDSCAPE AND LAWN",
+  "image": "https://100.109.177.22:8000/img_8d54aa870b1f.jpg",
+  "telephone": "205-281-8448",
+  "email": "hello@jebslandscape.com",
+  "url": "https://100.109.177.22:8000/jebs_landscape_demo.html",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Hoover, AL 35216",
+    "addressLocality": "Hoover",
+    "addressRegion": "AL",
+    "postalCode": "35216",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 33.4054,
+    "longitude": -86.8114
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "opens": "07:00",
+      "closes": "18:00"
     },
-    "geo": {
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "08:00",
+      "closes": "14:00"
+    }
+  ],
+  "serviceArea": {
+    "@type": "GeoCircle",
+    "geoMidpoint": {
       "@type": "GeoCoordinates",
       "latitude": 33.4054,
       "longitude": -86.8114
     },
-    "openingHoursSpecification": [
+    "geoRadius": "25000"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Lawn Care Services",
+    "itemListElement": [
       {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        "opens": "07:00",
-        "closes": "18:00"
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": "Saturday",
-        "opens": "08:00",
-        "closes": "14:00"
-      }
-    ],
-    "serviceArea": {
-      "@type": "GeoCircle",
-      "geoMidpoint": {
-        "@type": "GeoCoordinates",
-        "latitude": 33.4054,
-        "longitude": -86.8114
-      },
-      "geoRadius": "25000"
-    },
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Lawn Care Services",
-      "itemListElement": [
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Professional Mowing",
-            "description": "Weekly & biweekly precision cutting with commercial-grade mowers"
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Trim & Edge Included",
-            "description": "Clean edges along driveways, walkways, and beds"
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Clean, Neat & Reliable",
-            "description": "Clippings blown off, beds tidy, same crew every visit"
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Boost Curb Appeal",
-            "description": "Transform your property's first impression"
-          }
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Professional Mowing",
+          "description": "Weekly & biweekly precision cutting with commercial-grade mowers"
         }
-      ]
-    },
-    "priceRange": "$$",
-    "currenciesAccepted": "USD",
-    "paymentAccepted": "Cash, Check, Credit Card",
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "127"
-    }
-  }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Trim & Edge Included",
+          "description": "Clean edges along driveways, walkways, and beds"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Clean, Neat & Reliable",
+          "description": "Clippings blown off, beds tidy, same crew every visit"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Boost Curb Appeal",
+          "description": "Transform your property's first impression"
+        }
+      }
+    ]
+  },
+  "priceRange": "$$",
+  "currenciesAccepted": "USD",
+  "paymentAccepted": "Cash, Check, Credit Card"
+}
   </script>
   <style>
     :root {
@@ -965,7 +966,7 @@
       <a href="#services">Services</a>
       <a href="#portfolio">Portfolio</a>
       <a href="#about">Our Story</a>
-      <a href="#testimonials">Reviews</a>
+      
     </nav>
     <div class="theme-toggle" id="theme-toggle" data-theme="dark">
       <button class="theme-btn active" data-theme="dark">Dark</button>
@@ -1122,21 +1123,20 @@
   <!-- About -->
   <section id="about" class="about">
     <div class="section-header">
-      <div class="section-label">Our Story</div>
-      <h2 class="section-title">Three Generations of Green Thumbs</h2>
+      <div class="section-label">About JEB'S</div>
+      <h2 class="section-title">Professional Lawn Care You Can Count On</h2>
     </div>
     <div class="about-content">
       <div class="about-image" style="background: linear-gradient(135deg, var(--bg-surface) 0%, var(--bg-panel) 100%); display: flex; align-items: center; justify-content: center; aspect-ratio: 4/3; border-radius: 20px; border: 1px solid var(--border-bright);">
         <span style="color: var(--text-muted); font-size: 14px;">Photo coming soon</span>
       </div>
       <div class="about-text">
-        <p>Founded in 2008 by Jeb Harrison, a third-generation horticulturist who learned the trade from his grandfather's nursery in the Tennessee Valley. What started as a one-truck mowing route in Hoover has grown into the Birmingham metro's most trusted landscape firm — still family-owned, still obsessed with the details.</p>
-        <p>We don't just maintain yards. We steward living ecosystems across Hoover, Vestavia Hills, Mountain Brook, and the greater Birmingham area. Every property gets a dedicated crew lead, a customized care calendar, and direct access to our founder's cell phone. No call centers. No subcontractors. Just craftsmen who know your landscape by name.</p>
-        <p>Our team of 28 includes certified arborists, licensed irrigators, ICPI-certified hardscape installers, and a licensed landscape architect. We invest in continuous education because the science of Alabama's red clay soil, native plants, and water management never stops evolving.</p>
+        <p>Licensed, insured, and locally operated in Hoover, AL. We provide weekly and biweekly mowing service with trim & edge included — no upsells, no surprises.</p>
+        <p>Same crew, same day, every visit. We track weather, remember gate codes, and text you when we're on the way. 98% of our clients stay with us year over year because we show up and do the job right.</p>
         <div class="stats">
-          <div class="stat"><div class="stat-value" data-target="28">0</div><div class="stat-label">Certified Professionals</div></div>
-          <div class="stat"><div class="stat-value" data-target="847">0</div><div class="stat-label">Active Properties</div></div>
           <div class="stat"><div class="stat-value" data-target="98">0</div><div class="stat-label">Client Retention Rate</div></div>
+          <div class="stat"><div class="stat-value" data-target="2008">0</div><div class="stat-label">Serving Hoover Since</div></div>
+          <div class="stat"><div class="stat-value" data-target="25">0</div><div class="stat-label">Mile Service Radius</div></div>
         </div>
       </div>
     </div>
@@ -1204,52 +1204,7 @@
         <div class="gallery-overlay"><h4>Hillcrest Haven — Hoover</h4><span>Hardscape & Lighting • 2024</span></div>
       </article>
     </div>
-  </section>
-
-  <!-- Testimonials -->
-  <section id="testimonials" class="testimonials">
-    <div class="section-header">
-      <div class="section-label">Testimonials</div>
-      <h2 class="section-title">What Our Clients Say</h2>
-    </div>
-    <div class="testimonials-grid">
-      <article class="testimonial stagger-1">
-        <div class="rating">★★★★★</div>
-        <p class="testimonial-text">"JEB'S transformed our yard from patchy grass to a showpiece. The crew shows up every Tuesday like clockwork, edges are crisp, and they always clean up. Best money we spend on the house."</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">MS</div>
-          <div>
-            <div class="author-name">Mike & Sarah T.</div>
-            <div class="author-location">Hoover, AL</div>
-          </div>
-        </div>
-      </article>
-      <article class="testimonial stagger-2">
-        <div class="rating">★★★★★</div>
-        <p class="testimonial-text">"We've used three other services in five years. JEB'S is the first one where we don't have to text them to show up. They know our property, they know the gates, they know the dog. Reliable is an understatement."</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">JH</div>
-          <div>
-            <div class="author-name">James H.</div>
-            <div class="author-location">Vestavia Hills, AL</div>
-          </div>
-        </div>
-      </article>
-      <article class="testimonial stagger-3">
-        <div class="rating">★★★★★</div>
-        <p class="testimonial-text">"The front yard redesign completely changed our curb appeal. Jeb walked us through the plant choices for our red clay soil, and six months later everything is thriving. Professional, knowledgeable, and they stand behind their work."</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">LW</div>
-          <div>
-            <div class="author-name">Lisa W.</div>
-            <div class="author-location">Mountain Brook, AL</div>
-          </div>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <!-- Parallax Showcase -->
+  </section><!-- Parallax Showcase -->
   <section class="parallax-showcase">
     <div class="parallax-layers">
       <!-- Layer 1: Background (slowest) -->
@@ -1368,7 +1323,7 @@
         <ul>
           <li><a href="#about">Our Story</a></li>
           <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#testimonials">Reviews</a></li>
+          <li></li>
           <li><a href="#">Careers</a></li>
           <li><a href="#">Blog & Tips</a></li>
           <li><a href="#">Contact</a></li>
@@ -1442,7 +1397,7 @@
         document.addEventListener('mouseenter', () => { cursorVisible = true; cursor.style.opacity = '1'; });
       
         // Hover detection for interactive elements
-        const interactiveSelectors = 'a, button, .service-card, .gallery-item, .testimonial, input, select, .magnetic, .fab, .fab-item, .theme-btn, .expand-btn, .slider-handle';
+        const interactiveSelectors = 'a, button, .service-card, .gallery-item, input, select, .magnetic, .fab, .fab-item, .theme-btn, .expand-btn, .slider-handle';
         document.addEventListener('mouseover', (e) => {
           if (e.target.closest(interactiveSelectors)) {
             cursor.classList.add('hover');
@@ -1672,7 +1627,7 @@
           });
         }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
       
-        document.querySelectorAll('.reveal-up, .reveal-scale, .reveal-fade, .service-card, .gallery-item, .testimonial, .stat, .section-header').forEach(el => {
+        document.querySelectorAll('.reveal-up, .reveal-scale, .reveal-fade, .service-card, .gallery-item, .stat, .section-header').forEach(el => {
           if (!el.classList.contains('reveal-up') && !el.classList.contains('reveal-scale') && !el.classList.contains('reveal-fade')) {
             el.classList.add('reveal-up');
           }
