@@ -1002,7 +1002,7 @@
         document.addEventListener('mouseenter', () => { cursorVisible = true; cursor.style.opacity = '1'; });
       
         // Hover detection for interactive elements
-        const interactiveSelectors = 'a, button, .service-card, input, select, .magnetic, .fab, .fab-item, .theme-btn, .expand-btn';
+        const interactiveSelectors = 'a, button, .service-card, input, select, .magnetic, .fab, .fab-item, .expand-btn';
         document.addEventListener('mouseover', (e) => {
           if (e.target.closest(interactiveSelectors)) {
             cursor.classList.add('hover');
@@ -1123,9 +1123,7 @@
 
       // 6. THEME TOGGLE
       function initThemeToggle() {
-        const toggle = document.getElementById('theme-toggle');
-        const buttons = toggle.querySelectorAll('.theme-btn');
-        const root = document.documentElement;
+        // theme toggle removed
       
         // Load saved theme
         const savedTheme = localStorage.getItem('theme') || 'dark';
@@ -1150,8 +1148,7 @@
           if (theme === 'auto') {
             effectiveTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
           }
-          root.setAttribute('data-theme', effectiveTheme);
-          toggle.setAttribute('data-theme', theme);
+// theme removed
           buttons.forEach(btn => btn.classList.toggle('active', btn.dataset.theme === theme));
         }
       }
