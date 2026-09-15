@@ -245,11 +245,7 @@
       font-size: clamp(40px, 5.2vw, 62px); line-height: 1.08; letter-spacing: -0.025em;
       color: var(--ink); margin-bottom: 22px;
     }
-    .hero h1 .hl { color: var(--green-700); position: relative; white-space: nowrap; isolation: isolate; }
-    .hero h1 .hl::after {
-      content: ''; position: absolute; left: 0; right: 0; bottom: 6px; height: 10px;
-      background: rgba(60, 163, 98, 0.22); border-radius: 4px; z-index: -1;
-    }
+    .hero h1 .hl { color: var(--green-700); }
     .hero-sub { font-size: 18px; color: var(--muted); max-width: 540px; margin-bottom: 34px; }
     .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 42px; }
 
@@ -354,6 +350,7 @@
 
     /* ---------- Reviews ---------- */
     .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    section[id] { scroll-margin-top: 90px; }
     .review-card {
       background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg);
       padding: 28px 26px; display: flex; flex-direction: column; gap: 14px;
@@ -372,6 +369,23 @@
     }
     .review-name { font-weight: 600; font-size: 14.5px; color: var(--ink); line-height: 1.3; }
     .review-area { font-size: 13px; color: var(--muted); }
+    .rating-card {
+      background: var(--green-700); border: 1px solid var(--green-700); border-radius: var(--radius-lg);
+      padding: 28px 26px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 12px; text-align: center; color: #fff;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .rating-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .rating-score { font-family: var(--font-display); font-size: 56px; font-weight: 800; line-height: 1; }
+    .rating-card .stars { color: var(--gold); }
+    .rating-card .stars svg { width: 22px; height: 22px; }
+    .rating-count { font-size: 15px; opacity: 0.92; }
+    .rating-link {
+      margin-top: 8px; display: inline-block; font-weight: 600; font-size: 14.5px;
+      color: var(--green-700); background: #fff; border-radius: 999px; padding: 10px 20px;
+      text-decoration: none;
+    }
+    .rating-link:hover { text-decoration: underline; }
 
     /* ---------- CTA / Contact ---------- */
     .cta { background: linear-gradient(160deg, var(--green-950) 0%, var(--green-900) 60%, var(--green-800) 100%); color: #fff; padding: 104px 0; position: relative; overflow: hidden; }
@@ -507,7 +521,6 @@
       .form-row { grid-template-columns: 1fr; gap: 0; }
       .estimate-card { padding: 28px 22px; }
       .footer-grid { grid-template-columns: 1fr; gap: 34px; }
-      .hero h1 .hl { white-space: normal; }
     }
 
     /* ---------- Reduced motion ---------- */
@@ -706,63 +719,75 @@
         <div class="section-head section-head--center reveal">
           <span class="kicker">Reviews</span>
           <h2>What Hoover says about us</h2>
-          <p>Rated 5.0 by homeowners across Hoover, Vestavia Hills, and Mountain Brook.</p>
-          <!-- Swap these sample reviews with real customer reviews when available -->
+          <p>Rated <strong>5.0★ on Google</strong> — 34 reviews from homeowners across Hoover, Vestavia Hills, and Mountain Brook.</p>
+          <!-- Real reviews pulled from Google Business Profile (5.0★, 34 reviews) -->
         </div>
 
         <div class="reviews-grid">
           <article class="review-card reveal">
-            <div class="stars" aria-label="5 out of 5 stars">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.56-5 4.42 1.5 6.45L12 16.9 5.99 19.7l1.5-6.45-5-4.42 6.6-.56L12 2z"/></svg>
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.56-5 4.42 1.5 6.45L12 16.9 5.99 19.7l1.5-6.45-5-4.42 6.6-.56L12 2z"/></svg>
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.56-5 4.42 1.5 6.45L12 16.9 5.99 19.7l1.5-6.45-5-4.42 6.6-.56L12 2z"/></svg>
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.56-5 4.42 1.5 6.45L12 16.9 5.99 19.7l1.5-6.45-5-4.42 6.6-.56L12 2z"/></svg>
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.56-5 4.42 1.5 6.45L12 16.9 5.99 19.7l1.5-6.45-5-4.42 6.6-.56L12 2z"/></svg>
-            </div>
-            <blockquote>"Jeb's crew has mowed our lawn every week for three years. They're on time, the edges are always crisp, and the yard looks better than the clubhouse."</blockquote>
+            <div class="stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.56-5 4.42 1.5 6.45L12 16.9 5.99 19.7l1.5-6.45-5-4.42 6.6-.56L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.56-5 4.42 1.5 6.45L12 16.9 5.99 19.7l1.5-6.45-5-4.42 6.6-.56L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.56-5 4.42 1.5 6.45L12 16.9 5.99 19.7l1.5-6.45-5-4.42 6.6-.56L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.56-5 4.42 1.5 6.45L12 16.9 5.99 19.7l1.5-6.45-5-4.42 6.6-.56L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.56-5 4.42 1.5 6.45L12 16.9 5.99 19.7l1.5-6.45-5-4.42 6.6-.56L12 2z"/></svg></div>
+            <blockquote>"Jebs was amazing! Responsive, professional, talented, and friendly! My shrubs were overgrown due to my neglect….almost touching the roofline. Looked like a jungle. It was complex, and Peter made them look superb. Also took out 2 dead dogwoods and put in pine straw. Highly recommend!"</blockquote>
             <footer>
-              <span class="review-avatar">MH</span>
+              <span class="review-avatar">JW</span>
               <div>
-                <div class="review-name">Margaret H.</div>
-                <div class="review-area">Hoover, AL</div>
+                <div class="review-name">Jenny W.</div>
+                <div class="review-area">Google review · 3 months ago</div>
               </div>
             </footer>
           </article>
 
           <article class="review-card reveal" style="transition-delay: 0.08s;">
-            <div class="stars" aria-label="5 out of 5 stars">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.56-5 4.42 1.5 6.45L12 16.9 5.99 19.7l1.5-6.45-5-4.42 6.6-.56L12 2z"/></svg>
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.56-5 4.42 1.5 6.45L12 16.9 5.99 19.7l1.5-6.45-5-4.42 6.6-.56L12 2z"/></svg>
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.56-5 4.42 1.5 6.45L12 16.9 5.99 19.7l1.5-6.45-5-4.42 6.6-.56L12 2z"/></svg>
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.56-5 4.42 1.5 6.45L12 16.9 5.99 19.7l1.5-6.45-5-4.42 6.6-.56L12 2z"/></svg>
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.56-5 4.42 1.5 6.45L12 16.9 5.99 19.7l1.5-6.45-5-4.42 6.6-.56L12 2z"/></svg>
-            </div>
-            <blockquote>"We tried two other companies before Jeb's. The difference is the little things — they text when they're on the way and leave the yard spotless."</blockquote>
+            <div class="stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.56-5 4.42 1.5 6.45L12 16.9 5.99 19.7l1.5-6.45-5-4.42 6.6-.56L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.56-5 4.42 1.5 6.45L12 16.9 5.99 19.7l1.5-6.45-5-4.42 6.6-.56L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.56-5 4.42 1.5 6.45L12 16.9 5.99 19.7l1.5-6.45-5-4.42 6.6-.56L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.56-5 4.42 1.5 6.45L12 16.9 5.99 19.7l1.5-6.45-5-4.42 6.6-.56L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.56-5 4.42 1.5 6.45L12 16.9 5.99 19.7l1.5-6.45-5-4.42 6.6-.56L12 2z"/></svg></div>
+            <blockquote>"These guys did a fantastic (and extremely quick) job of leveling and graveling the area under our new 16’x16’ deck! … I honestly can’t believe how fast they did it and how great it looks. Highly recommend!"</blockquote>
             <footer>
-              <span class="review-avatar">DR</span>
+              <span class="review-avatar">KB</span>
               <div>
-                <div class="review-name">David R.</div>
-                <div class="review-area">Vestavia Hills, AL</div>
+                <div class="review-name">Kevin B.</div>
+                <div class="review-area">Google review · 3 months ago</div>
               </div>
             </footer>
           </article>
 
           <article class="review-card reveal" style="transition-delay: 0.16s;">
-            <div class="stars" aria-label="5 out of 5 stars">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.56-5 4.42 1.5 6.45L12 16.9 5.99 19.7l1.5-6.45-5-4.42 6.6-.56L12 2z"/></svg>
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.56-5 4.42 1.5 6.45L12 16.9 5.99 19.7l1.5-6.45-5-4.42 6.6-.56L12 2z"/></svg>
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.56-5 4.42 1.5 6.45L12 16.9 5.99 19.7l1.5-6.45-5-4.42 6.6-.56L12 2z"/></svg>
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.56-5 4.42 1.5 6.45L12 16.9 5.99 19.7l1.5-6.45-5-4.42 6.6-.56L12 2z"/></svg>
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.56-5 4.42 1.5 6.45L12 16.9 5.99 19.7l1.5-6.45-5-4.42 6.6-.56L12 2z"/></svg>
-            </div>
-            <blockquote>"Our gate code, our dog, our tricky side yard — they remember everything. It feels like family taking care of the yard."</blockquote>
+            <div class="stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.56-5 4.42 1.5 6.45L12 16.9 5.99 19.7l1.5-6.45-5-4.42 6.6-.56L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.56-5 4.42 1.5 6.45L12 16.9 5.99 19.7l1.5-6.45-5-4.42 6.6-.56L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.56-5 4.42 1.5 6.45L12 16.9 5.99 19.7l1.5-6.45-5-4.42 6.6-.56L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.56-5 4.42 1.5 6.45L12 16.9 5.99 19.7l1.5-6.45-5-4.42 6.6-.56L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.56-5 4.42 1.5 6.45L12 16.9 5.99 19.7l1.5-6.45-5-4.42 6.6-.56L12 2z"/></svg></div>
+            <blockquote>"Detail oriented, Peter is fabulous at making a yard look better than imagined. From pruning to cutting, Jeb's Lawn has improved the health of the lawn and revitalized the landscaping which has saved so much money, hassle, and time! Worth every single penny."</blockquote>
             <footer>
-              <span class="review-avatar">AT</span>
+              <span class="review-avatar">RZ</span>
               <div>
-                <div class="review-name">Amy &amp; Tom S.</div>
-                <div class="review-area">Mountain Brook, AL</div>
+                <div class="review-name">Rebecca Z.</div>
+                <div class="review-area">Local Guide · Google review</div>
               </div>
             </footer>
+          </article>
+          <article class="review-card reveal" style="transition-delay: 0.24s;">
+            <div class="stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.56-5 4.42 1.5 6.45L12 16.9 5.99 19.7l1.5-6.45-5-4.42 6.6-.56L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.56-5 4.42 1.5 6.45L12 16.9 5.99 19.7l1.5-6.45-5-4.42 6.6-.56L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.56-5 4.42 1.5 6.45L12 16.9 5.99 19.7l1.5-6.45-5-4.42 6.6-.56L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.56-5 4.42 1.5 6.45L12 16.9 5.99 19.7l1.5-6.45-5-4.42 6.6-.56L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.56-5 4.42 1.5 6.45L12 16.9 5.99 19.7l1.5-6.45-5-4.42 6.6-.56L12 2z"/></svg></div>
+            <blockquote>"Peter does a fantastic job and really cares about what he does! He is good about giving suggestions to make your yard look it&#8217;s best."</blockquote>
+            <footer>
+              <span class="review-avatar">GB</span>
+              <div>
+                <div class="review-name">Glenn &amp; Jean Marie B.</div>
+                <div class="review-area">Google review · 3 months ago</div>
+              </div>
+            </footer>
+          </article>
+
+          <article class="review-card reveal" style="transition-delay: 0.32s;">
+            <div class="stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.56-5 4.42 1.5 6.45L12 16.9 5.99 19.7l1.5-6.45-5-4.42 6.6-.56L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.56-5 4.42 1.5 6.45L12 16.9 5.99 19.7l1.5-6.45-5-4.42 6.6-.56L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.56-5 4.42 1.5 6.45L12 16.9 5.99 19.7l1.5-6.45-5-4.42 6.6-.56L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.56-5 4.42 1.5 6.45L12 16.9 5.99 19.7l1.5-6.45-5-4.42 6.6-.56L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.56-5 4.42 1.5 6.45L12 16.9 5.99 19.7l1.5-6.45-5-4.42 6.6-.56L12 2z"/></svg></div>
+            <blockquote>"Jeb rescued us. After waiting up to 4 weeks for our old guy, Jeb showed up the day I called. Now he texts me every other week &#8212; &#8220;grass needs cutting, be there tomorrow.&#8221; Highly recommended."</blockquote>
+            <footer>
+              <span class="review-avatar">JG</span>
+              <div>
+                <div class="review-name">Jeffrey &amp; Mary G.</div>
+                <div class="review-area">Google review · 2 years ago</div>
+              </div>
+            </footer>
+          </article>
+
+          <article class="rating-card reveal" style="transition-delay: 0.4s;">
+            <span class="rating-score">5.0</span>
+            <div class="stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.56-5 4.42 1.5 6.45L12 16.9 5.99 19.7l1.5-6.45-5-4.42 6.6-.56L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.56-5 4.42 1.5 6.45L12 16.9 5.99 19.7l1.5-6.45-5-4.42 6.6-.56L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.56-5 4.42 1.5 6.45L12 16.9 5.99 19.7l1.5-6.45-5-4.42 6.6-.56L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.56-5 4.42 1.5 6.45L12 16.9 5.99 19.7l1.5-6.45-5-4.42 6.6-.56L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.56-5 4.42 1.5 6.45L12 16.9 5.99 19.7l1.5-6.45-5-4.42 6.6-.56L12 2z"/></svg></div>
+            <span class="rating-count">34 Google reviews</span>
+            <a class="rating-link" href="https://www.google.com/maps/place/Jebs+Landscapes+and+Maintenance/data=!4m6!3m5!1s0x45f9b313ba9ff1ff:0xee3d597b5023c654!8m2!3d33.368007!4d-86.767495!16s%2Fg%2F11w9zv2jsj" target="_blank" rel="noopener">Read them on Google &#8599;</a>
           </article>
         </div>
       </div>
