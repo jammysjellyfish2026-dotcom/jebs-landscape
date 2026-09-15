@@ -979,6 +979,26 @@
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
 
+      // ---------- Anchor links (robust on mobile) ----------
+      // Mobile browsers resize the viewport (collapsing URL bar) mid-smooth-scroll,
+      // which breaks native #anchor jumps. Compute the target position ourselves.
+      document.addEventListener('click', function (e) {
+        var link = e.target.closest('a[href^="#"]');
+        if (!link) return;
+        var id = link.getAttribute('href').slice(1);
+        if (!id) return;
+        var target = document.getElementById(id);
+        if (!target) return;
+        e.preventDefault();
+        var headerH = header ? header.offsetHeight : 0;
+        var top = target.getBoundingClientRect().top + window.scrollY - headerH - 16;
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        window.scrollTo({ top: Math.max(0, top), behavior: reduce ? 'auto' : 'smooth' });
+        if (nav) { nav.classList.remove('open'); menuBtn && menuBtn.setAttribute('aria-expanded', 'false'); }
+        // keep URL shareable without letting the native jump double-scroll
+        if (history.replaceState) history.replaceState(null, '', '#' + id);
+      });
+
       // ---------- Reveal on scroll ----------
       var revealEls = document.querySelectorAll('.reveal');
       if ('IntersectionObserver' in window) {
