@@ -492,7 +492,169 @@
       display: flex; align-items: center; justify-content: center; color: var(--muted);
       transition: color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
     }
-    .social a:hover { color: var(--green-700); border-color: var(--green-500); transform: translateY(-2px); }
+    /* ---------- Gallery ---------- */
+    .gallery-filter {
+      display: flex; justify-content: center; flex-wrap: wrap; gap: 10px;
+      margin: -20px auto 44px; max-width: 860px;
+    }
+    .filter-btn {
+      appearance: none; -webkit-appearance: none;
+      background: var(--surface); color: var(--muted);
+      border: 1px solid var(--line); border-radius: 999px;
+      padding: 10px 20px; font-size: 14px; font-weight: 600;
+      cursor: pointer; transition: all 0.2s ease;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .filter-btn:hover {
+      color: var(--green-800); border-color: var(--green-500);
+      background: var(--green-50);
+    }
+    .filter-btn.active {
+      background: var(--green-800); color: #fff; border-color: var(--green-800);
+      box-shadow: 0 4px 14px rgba(30, 90, 51, 0.25);
+    }
+    .filter-btn .filter-count {
+      font-size: 12px; opacity: 0.75; font-weight: 500;
+    }
+    .filter-btn.active .filter-count { opacity: 0.9; }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 26px;
+    }
+    .gallery-card {
+      position: relative; border-radius: var(--radius-lg); overflow: hidden;
+      background: var(--surface); border: 1px solid var(--line);
+      box-shadow: var(--shadow-sm); aspect-ratio: 4 / 3;
+      cursor: pointer; outline: none;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+    }
+    .gallery-card.is-hidden {
+      display: none;
+    }
+    .gallery-card:hover, .gallery-card:focus-visible {
+      transform: translateY(-5px); box-shadow: var(--shadow-lg);
+      border-color: rgba(60, 163, 98, 0.45);
+    }
+    .gallery-card img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .gallery-card:hover img, .gallery-card:focus-visible img {
+      transform: scale(1.06);
+    }
+    .gallery-card__badge {
+      position: absolute; top: 14px; left: 14px; z-index: 2;
+      background: rgba(18, 48, 29, 0.84); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      color: #fff; font-size: 12px; font-weight: 600;
+      padding: 5px 12px; border-radius: 999px; letter-spacing: 0.02em;
+    }
+    .gallery-card__location {
+      position: absolute; top: 14px; right: 14px; z-index: 2;
+      background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      color: var(--green-950); font-size: 11.5px; font-weight: 600;
+      padding: 4px 10px; border-radius: 999px;
+      display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .gallery-card__location svg { color: var(--green-600); }
+    .gallery-card__overlay {
+      position: absolute; inset: auto 0 0 0; z-index: 2;
+      padding: 48px 18px 16px;
+      background: linear-gradient(to top, rgba(14, 38, 23, 0.94) 0%, rgba(14, 38, 23, 0.65) 60%, transparent 100%);
+      color: #fff; display: flex; align-items: flex-end; justify-content: space-between; gap: 12px;
+      transition: background 0.25s ease;
+    }
+    .gallery-card__info h3 {
+      font-family: var(--font-display); font-size: 16px; font-weight: 700;
+      color: #fff; line-height: 1.25; margin-bottom: 3px;
+    }
+    .gallery-card__info p {
+      font-size: 13px; color: rgba(255, 255, 255, 0.85); line-height: 1.35;
+    }
+    .gallery-card__zoom {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(255, 255, 255, 0.22); backdrop-filter: blur(4px);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; color: #fff; transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .gallery-card:hover .gallery-card__zoom {
+      background: var(--green-500); transform: scale(1.12);
+    }
+
+    /* ---------- Lightbox Modal ---------- */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 1000;
+      background: rgba(10, 24, 15, 0.92);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.25s ease;
+      padding: 24px;
+    }
+    .lightbox.is-open {
+      opacity: 1; pointer-events: auto;
+    }
+    .lightbox__dialog {
+      position: relative; max-width: 1040px; width: 100%;
+      display: flex; flex-direction: column; align-items: center;
+      transform: scale(0.96); transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .lightbox.is-open .lightbox__dialog {
+      transform: scale(1);
+    }
+    .lightbox__img-wrap {
+      position: relative; width: 100%; max-height: 72vh;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: var(--radius-lg); overflow: hidden;
+      background: #000; box-shadow: 0 24px 64px rgba(0,0,0,0.6);
+    }
+    .lightbox__img {
+      max-width: 100%; max-height: 72vh; width: auto; height: auto;
+      object-fit: contain; display: block;
+    }
+    .lightbox__close {
+      position: absolute; top: -48px; right: 0;
+      background: rgba(255, 255, 255, 0.16); border: none; color: #fff;
+      width: 40px; height: 40px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: background 0.2s ease, transform 0.15s ease;
+    }
+    .lightbox__close:hover {
+      background: rgba(255, 255, 255, 0.32); transform: scale(1.08);
+    }
+    .lightbox__nav {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.2); border: none; color: #fff;
+      width: 46px; height: 46px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: background 0.2s ease, transform 0.15s ease;
+      z-index: 10;
+    }
+    .lightbox__nav:hover {
+      background: var(--green-500); transform: translateY(-50%) scale(1.1);
+    }
+    .lightbox__nav--prev { left: 16px; }
+    .lightbox__nav--next { right: 16px; }
+    .lightbox__caption {
+      width: 100%; margin-top: 16px; color: #fff;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      flex-wrap: wrap;
+    }
+    .lightbox__title { font-family: var(--font-display); font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+    .lightbox__sub { font-size: 14px; color: rgba(255, 255, 255, 0.82); }
+    .lightbox__cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--green-600); color: #fff; font-size: 13.5px; font-weight: 600;
+      padding: 10px 20px; border-radius: 999px; text-decoration: none;
+      transition: background 0.2s ease, transform 0.15s ease;
+    }
+    .lightbox__cta:hover {
+      background: var(--green-500); transform: translateY(-2px);
+    }
+    .lightbox__counter {
+      font-size: 13.5px; color: rgba(255, 255, 255, 0.65); font-weight: 500;
+    }
 
     /* ---------- Reveal ---------- */
     .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
@@ -530,6 +692,14 @@
       .section { padding: 76px 0; }
       .cta { padding: 76px 0; }
       .services-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; gap: 18px; }
+      .filter-btn { padding: 8px 14px; font-size: 13px; }
+      .lightbox { padding: 12px; }
+      .lightbox__close { top: -42px; width: 36px; height: 36px; }
+      .lightbox__nav { width: 38px; height: 38px; }
+      .lightbox__nav--prev { left: 8px; }
+      .lightbox__nav--next { right: 8px; }
+      .lightbox__caption { flex-direction: column; align-items: flex-start; gap: 12px; }
       .about-check { grid-template-columns: 1fr; }
       .stats { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; gap: 0; }
@@ -556,6 +726,7 @@
 
       <nav class="nav" id="main-nav" aria-label="Main navigation">
         <a href="#services">Services</a>
+        <a href="#gallery">Our Work</a>
         <a href="#about">Why Us</a>
         <a href="#reviews">Reviews</a>
         <a href="#contact">Contact</a>
@@ -693,12 +864,254 @@
       </div>
     </section>
 
+    <!-- ======================= Recent Work / Gallery ======================= -->
+    <section class="section" id="gallery">
+      <div class="container">
+        <div class="section-head section-head--center reveal">
+          <span class="kicker">Real Projects</span>
+          <h2>Craftsmanship you can see on every lawn</h2>
+          <p>Every photo below shows real work completed by Jeb’s crew for homeowners in Hoover, Vestavia Hills, and Mountain Brook.</p>
+        </div>
+
+        <!-- Filter tabs -->
+        <div class="gallery-filter reveal" role="tablist" aria-label="Filter projects by service">
+          <button type="button" class="filter-btn active" data-filter="all">
+            All Projects <span class="filter-count">(11)</span>
+          </button>
+          <button type="button" class="filter-btn" data-filter="mowing">
+            Mowing &amp; Edging <span class="filter-count">(3)</span>
+          </button>
+          <button type="button" class="filter-btn" data-filter="mulch">
+            Pine Straw &amp; Mulch <span class="filter-count">(3)</span>
+          </button>
+          <button type="button" class="filter-btn" data-filter="hedges">
+            Hedges &amp; Shrubs <span class="filter-count">(3)</span>
+          </button>
+          <button type="button" class="filter-btn" data-filter="cleanups">
+            Seasonal Cleanups <span class="filter-count">(2)</span>
+          </button>
+        </div>
+
+        <!-- Gallery grid -->
+        <div class="gallery-grid" id="galleryGrid">
+          <!-- Card 1 -->
+          <article class="gallery-card reveal" data-category="hedges" data-title="Pristine Front Yard &amp; Sculpted Shrubs" data-location="Hoover, AL" data-desc="Symmetrical ornamental shrub shaping and manicured front lawn edging." data-full="gallery/frontyard-garage-entry-round-shrub.jpg">
+            <img src="gallery/frontyard-garage-entry-round-shrub.jpg" alt="Pristine front lawn and sculpted round shrubs by Jeb's Landscape in Hoover" loading="lazy" width="1280" height="960">
+            <span class="gallery-card__badge">Hedges &amp; Shrubs</span>
+            <span class="gallery-card__location">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              Hoover
+            </span>
+            <div class="gallery-card__overlay">
+              <div class="gallery-card__info">
+                <h3>Pristine Front Yard &amp; Shrubs</h3>
+                <p>Symmetrical shaping &amp; crisp edge line</p>
+              </div>
+              <div class="gallery-card__zoom" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="gallery-card reveal" data-category="mulch" data-title="Flagstone Walkway &amp; Pine Straw" data-location="Vestavia Hills, AL" data-desc="Fresh long-needle pine straw border accentuating a natural stone stepping path." data-full="gallery/backyard-flagstone-walkway-bed.jpg">
+            <img src="gallery/backyard-flagstone-walkway-bed.jpg" alt="Flagstone walkway with fresh pine straw border installed by Jeb's Landscape" loading="lazy" width="960" height="1280">
+            <span class="gallery-card__badge">Pine Straw &amp; Mulch</span>
+            <span class="gallery-card__location">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              Vestavia Hills
+            </span>
+            <div class="gallery-card__overlay">
+              <div class="gallery-card__info">
+                <h3>Flagstone Walkway &amp; Pine Straw</h3>
+                <p>Natural stone path with rolled straw border</p>
+              </div>
+              <div class="gallery-card__zoom" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="gallery-card reveal" data-category="mulch" data-title="Ornamental Tree Island Bed" data-location="Mountain Brook, AL" data-desc="Clean edge trenching and deep pine straw installation around mature focal garden trees." data-full="gallery/backyard-ornamental-tree-mulch-bed.jpg">
+            <img src="gallery/backyard-ornamental-tree-mulch-bed.jpg" alt="Ornamental tree landscape bed with fresh pine straw in Mountain Brook, AL" loading="lazy" width="1280" height="960">
+            <span class="gallery-card__badge">Pine Straw &amp; Mulch</span>
+            <span class="gallery-card__location">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              Mountain Brook
+            </span>
+            <div class="gallery-card__overlay">
+              <div class="gallery-card__info">
+                <h3>Ornamental Tree Island Bed</h3>
+                <p>Trenched edge with premium long-needle straw</p>
+              </div>
+              <div class="gallery-card__zoom" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="gallery-card reveal" data-category="hedges" data-title="Flowering Shrub Bed &amp; Flowers" data-location="Hoover, AL" data-desc="Pruned decorative bushes with healthy seasonal blooms and crisp grass borders." data-full="gallery/frontyard-corner-shrubs-pink-flowers.jpg">
+            <img src="gallery/frontyard-corner-shrubs-pink-flowers.jpg" alt="Flowering shrub trimming and corner bed edging in Hoover" loading="lazy" width="1280" height="960">
+            <span class="gallery-card__badge">Hedges &amp; Shrubs</span>
+            <span class="gallery-card__location">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              Hoover
+            </span>
+            <div class="gallery-card__overlay">
+              <div class="gallery-card__info">
+                <h3>Corner Shrub Bed &amp; Flowers</h3>
+                <p>Hand-pruned bushes with clean mulch bed</p>
+              </div>
+              <div class="gallery-card__zoom" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 5 -->
+          <article class="gallery-card reveal" data-category="mowing" data-title="Patio Perimeter &amp; Turf" data-location="Hoover, AL" data-desc="Clean blade edging along paved hardscapes and lush backyard grass." data-full="gallery/backyard-hedge-bed-near-patio.jpg">
+            <img src="gallery/backyard-hedge-bed-near-patio.jpg" alt="Backyard patio perimeter and manicured lawn care by Jeb's Landscape" loading="lazy" width="1280" height="960">
+            <span class="gallery-card__badge">Mowing &amp; Edging</span>
+            <span class="gallery-card__location">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              Hoover
+            </span>
+            <div class="gallery-card__overlay">
+              <div class="gallery-card__info">
+                <h3>Patio Perimeter &amp; Turf</h3>
+                <p>Blade-edged concrete &amp; manicured lawn</p>
+              </div>
+              <div class="gallery-card__zoom" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 6 -->
+          <article class="gallery-card reveal" data-category="mowing" data-title="Crisp Sidewalk &amp; Curve Edging" data-location="Vestavia Hills, AL" data-desc="Razor-sharp vertical trench edging around driveway curves and sidewalk islands." data-full="gallery/frontyard-purple-shrub-sidewalk-circle.jpg">
+            <img src="gallery/frontyard-purple-shrub-sidewalk-circle.jpg" alt="Razor-sharp vertical sidewalk edging and curb appeal in Vestavia Hills" loading="lazy" width="1280" height="960">
+            <span class="gallery-card__badge">Mowing &amp; Edging</span>
+            <span class="gallery-card__location">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              Vestavia Hills
+            </span>
+            <div class="gallery-card__overlay">
+              <div class="gallery-card__info">
+                <h3>Crisp Sidewalk &amp; Curve Edging</h3>
+                <p>Vertical blade edge defining lawn and walkways</p>
+              </div>
+              <div class="gallery-card__zoom" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 7 -->
+          <article class="gallery-card reveal" data-category="cleanups" data-title="Garden Bed Revitalization" data-location="Hoover, AL" data-desc="Active bed clearing, old weed removal, and fresh mulch transport." data-full="gallery/backyard-mulch-path-wheelbarrow.jpg">
+            <img src="gallery/backyard-mulch-path-wheelbarrow.jpg" alt="Active garden bed mulch installation and yard cleanup in Hoover" loading="lazy" width="960" height="1280">
+            <span class="gallery-card__badge">Seasonal Cleanups</span>
+            <span class="gallery-card__location">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              Hoover
+            </span>
+            <div class="gallery-card__overlay">
+              <div class="gallery-card__info">
+                <h3>Garden Bed Revitalization</h3>
+                <p>Thorough cleanup, edging &amp; fresh mulch</p>
+              </div>
+              <div class="gallery-card__zoom" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 8 -->
+          <article class="gallery-card reveal" data-category="hedges" data-title="Foundation Bed Trimming" data-location="Mountain Brook, AL" data-desc="Hand-shaped matching shrubs framing garage and entry foundation." data-full="gallery/frontyard-garage-twin-shrubs.jpg">
+            <img src="gallery/frontyard-garage-twin-shrubs.jpg" alt="Matching foundation shrubs trimmed to perfection in Mountain Brook" loading="lazy" width="1280" height="960">
+            <span class="gallery-card__badge">Hedges &amp; Shrubs</span>
+            <span class="gallery-card__location">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              Mountain Brook
+            </span>
+            <div class="gallery-card__overlay">
+              <div class="gallery-card__info">
+                <h3>Foundation Bed Trimming</h3>
+                <p>Symmetrical shaping &amp; healthy foliage</p>
+              </div>
+              <div class="gallery-card__zoom" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 9 -->
+          <article class="gallery-card reveal" data-category="mowing" data-title="Backyard Oasis &amp; Porch Edging" data-location="Hoover, AL" data-desc="Weekly mowing and detailed trimming right up to outdoor living spaces." data-full="gallery/backyard-screened-porch-patio.jpg">
+            <img src="gallery/backyard-screened-porch-patio.jpg" alt="Backyard lawn mowing and screened porch landscaping by Jeb's Landscape" loading="lazy" width="1280" height="960">
+            <span class="gallery-card__badge">Mowing &amp; Edging</span>
+            <span class="gallery-card__location">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              Hoover
+            </span>
+            <div class="gallery-card__overlay">
+              <div class="gallery-card__info">
+                <h3>Backyard Oasis &amp; Porch Edging</h3>
+                <p>Weekly precision mow &amp; hardscape trim</p>
+              </div>
+              <div class="gallery-card__zoom" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 10 -->
+          <article class="gallery-card reveal" data-category="mulch" data-title="Decorative Tree Ring &amp; Bed" data-location="Hoover, AL" data-desc="Neatly defined mulch ring protecting root systems with decorative garden placement." data-full="gallery/frontyard-two-trunk-tree-duck-statue.jpg">
+            <img src="gallery/frontyard-two-trunk-tree-duck-statue.jpg" alt="Decorative tree ring with fresh dark mulch and garden statue in Hoover" loading="lazy" width="1280" height="960">
+            <span class="gallery-card__badge">Pine Straw &amp; Mulch</span>
+            <span class="gallery-card__location">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              Hoover
+            </span>
+            <div class="gallery-card__overlay">
+              <div class="gallery-card__info">
+                <h3>Decorative Tree Ring &amp; Bed</h3>
+                <p>Deep root-protective mulch trench &amp; edging</p>
+              </div>
+              <div class="gallery-card__zoom" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 11 -->
+          <article class="gallery-card reveal" data-category="cleanups" data-title="Side Yard &amp; Foundation Clearing" data-location="Hoover, AL" data-desc="Clear walkways, weed-free gravel/mulch around HVAC units, and clean turf lines." data-full="gallery/sideyard-ac-units-foundation-bed.jpg">
+            <img src="gallery/sideyard-ac-units-foundation-bed.jpg" alt="Side yard clearing and clean foundation bed around AC units in Hoover" loading="lazy" width="1280" height="960">
+            <span class="gallery-card__badge">Seasonal Cleanups</span>
+            <span class="gallery-card__location">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              Hoover
+            </span>
+            <div class="gallery-card__overlay">
+              <div class="gallery-card__info">
+                <h3>Side Yard &amp; Foundation Clearing</h3>
+                <p>Clean utility access, weed clearing &amp; edge</p>
+              </div>
+              <div class="gallery-card__zoom" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <!-- ======================= About / Why Us ======================= -->
-    <section class="section" id="about">
+    <section class="section section--tint" id="about">
       <div class="container about-grid">
         <div class="about-media reveal">
           <div class="about-media__frame">
-            <img src="hero-emblem.png" alt="Lush, well-maintained lawn in Hoover, Alabama" loading="lazy">
+            <img src="gallery/frontyard-garage-entry-round-shrub.jpg" alt="Lush, well-maintained lawn and sculpted shrubs in Hoover, Alabama" loading="lazy">
           </div>
         </div>
 
@@ -911,6 +1324,37 @@
     </section>
   </main>
 
+  <!-- ======================= Lightbox Modal ======================= -->
+  <div id="gallery-lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Photo preview" aria-hidden="true">
+    <div class="lightbox__dialog">
+      <button class="lightbox__close" id="lightbox-close" aria-label="Close photo preview">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <button class="lightbox__nav lightbox__nav--prev" id="lightbox-prev" aria-label="Previous photo">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button class="lightbox__nav lightbox__nav--next" id="lightbox-next" aria-label="Next photo">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+      <div class="lightbox__img-wrap">
+        <img class="lightbox__img" id="lightbox-img" src="" alt="">
+      </div>
+      <div class="lightbox__caption">
+        <div>
+          <div class="lightbox__title" id="lightbox-title"></div>
+          <div class="lightbox__sub" id="lightbox-desc"></div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 14px;">
+          <span class="lightbox__counter" id="lightbox-counter">1 of 11</span>
+          <a href="#contact" class="lightbox__cta" id="lightbox-cta">
+            Request an Estimate
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- ======================= Footer ======================= -->
   <footer class="site-footer">
     <div class="container">
@@ -939,6 +1383,7 @@
         <div class="footer-col">
           <h4>Company</h4>
           <ul>
+            <li><a href="#gallery">Recent Work</a></li>
             <li><a href="#about">Why Us</a></li>
             <li><a href="#reviews">Reviews</a></li>
             <li><a href="#contact">Contact</a></li>
@@ -1037,6 +1482,117 @@
         revealEls.forEach(function (el) { revealObserver.observe(el); });
       } else {
         revealEls.forEach(function (el) { el.classList.add('is-visible'); });
+      }
+
+      // ---------- Gallery filtering & Lightbox ----------
+      var filterBtns = document.querySelectorAll('.filter-btn');
+      var galleryCards = Array.prototype.slice.call(document.querySelectorAll('.gallery-card'));
+      var lightbox = document.getElementById('gallery-lightbox');
+      var lightboxImg = document.getElementById('lightbox-img');
+      var lightboxTitle = document.getElementById('lightbox-title');
+      var lightboxDesc = document.getElementById('lightbox-desc');
+      var lightboxCounter = document.getElementById('lightbox-counter');
+      var lightboxClose = document.getElementById('lightbox-close');
+      var lightboxPrev = document.getElementById('lightbox-prev');
+      var lightboxNext = document.getElementById('lightbox-next');
+      var lightboxCta = document.getElementById('lightbox-cta');
+      var currentIdx = 0;
+      var activeCards = galleryCards;
+
+      if (filterBtns.length && galleryCards.length) {
+        filterBtns.forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var filter = btn.getAttribute('data-filter');
+            filterBtns.forEach(function (b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+
+            activeCards = [];
+            galleryCards.forEach(function (card) {
+              var cat = card.getAttribute('data-category');
+              if (filter === 'all' || cat === filter) {
+                card.classList.remove('is-hidden');
+                activeCards.push(card);
+              } else {
+                card.classList.add('is-hidden');
+              }
+            });
+          });
+        });
+
+        var showPhoto = function (idx) {
+          if (!activeCards.length) return;
+          if (idx < 0) idx = activeCards.length - 1;
+          if (idx >= activeCards.length) idx = 0;
+          currentIdx = idx;
+
+          var card = activeCards[currentIdx];
+          var full = card.getAttribute('data-full');
+          var title = card.getAttribute('data-title');
+          var desc = card.getAttribute('data-desc');
+          var loc = card.getAttribute('data-location');
+
+          if (lightboxImg) {
+            lightboxImg.src = full;
+            lightboxImg.alt = title;
+          }
+          if (lightboxTitle) lightboxTitle.textContent = title + ' · ' + loc;
+          if (lightboxDesc) lightboxDesc.textContent = desc;
+          if (lightboxCounter) lightboxCounter.textContent = (currentIdx + 1) + ' of ' + activeCards.length;
+        };
+
+        var openLightbox = function (idx) {
+          showPhoto(idx);
+          if (lightbox) {
+            lightbox.classList.add('is-open');
+            lightbox.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+          }
+        };
+
+        var closeLightbox = function () {
+          if (lightbox) {
+            lightbox.classList.remove('is-open');
+            lightbox.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+          }
+        };
+
+        galleryCards.forEach(function (card) {
+          card.addEventListener('click', function () {
+            var idx = activeCards.indexOf(card);
+            if (idx !== -1) openLightbox(idx);
+          });
+          card.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              var idx = activeCards.indexOf(card);
+              if (idx !== -1) openLightbox(idx);
+            }
+          });
+          card.setAttribute('tabindex', '0');
+          card.setAttribute('role', 'button');
+          card.setAttribute('aria-label', 'View larger photo of ' + card.getAttribute('data-title'));
+        });
+
+        if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+        if (lightboxPrev) lightboxPrev.addEventListener('click', function (e) { e.stopPropagation(); showPhoto(currentIdx - 1); });
+        if (lightboxNext) lightboxNext.addEventListener('click', function (e) { e.stopPropagation(); showPhoto(currentIdx + 1); });
+        if (lightboxCta) lightboxCta.addEventListener('click', function () { closeLightbox(); });
+
+        if (lightbox) {
+          lightbox.addEventListener('click', function (e) {
+            if (e.target === lightbox || e.target.classList.contains('lightbox__dialog')) {
+              closeLightbox();
+            }
+          });
+        }
+
+        document.addEventListener('keydown', function (e) {
+          if (!lightbox || !lightbox.classList.contains('is-open')) return;
+          if (e.key === 'Escape') closeLightbox();
+          else if (e.key === 'ArrowLeft') showPhoto(currentIdx - 1);
+          else if (e.key === 'ArrowRight') showPhoto(currentIdx + 1);
+        });
       }
 
       // ---------- Estimate form ----------
