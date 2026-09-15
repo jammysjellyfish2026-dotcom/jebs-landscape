@@ -1019,6 +1019,8 @@
       var form = document.getElementById('estimateForm');
       var card = document.getElementById('estimate-card');
       var submitAnother = document.getElementById('submit-another');
+      var submitBtn = form ? form.querySelector('.form-submit') : null;
+      var formNote = form ? form.querySelector('.form-note') : null;
       if (form) {
         form.addEventListener('submit', function (e) {
           e.preventDefault();
@@ -1026,13 +1028,48 @@
             form.reportValidity();
             return;
           }
-          card.classList.add('is-submitted');
-          form.reset();
+          var payload = {
+            _subject: 'New estimate request — ' + form.elements['name'].value.trim(),
+            _template: 'table',
+            _captcha: 'false',
+            Name: form.elements['name'].value.trim(),
+            Phone: form.elements['phone'].value.trim(),
+            Email: form.elements['email'].value.trim(),
+            Service: form.elements['service'].value,
+            'Property address': form.elements['address'].value.trim(),
+            Details: form.elements['notes'].value.trim() || '(none)'
+          };
+          if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
+          fetch('https://formsubmit.co/ajax/Jebslawn2020@gmail.com', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify(payload)
+          })
+            .then(function (res) { return res.json(); })
+            .then(function (data) {
+              if (data && (data.success === 'true' || data.success === true)) {
+                card.classList.add('is-submitted');
+                form.reset();
+              } else {
+                throw new Error(data && data.message ? data.message : 'Unknown error');
+              }
+            })
+            .catch(function (err) {
+              console.error('Estimate submission failed:', err);
+              if (formNote) {
+                formNote.textContent = 'Something went wrong sending your request. Please try again or call 205-281-8448.';
+                formNote.style.color = '#b42318';
+              }
+            })
+            .finally(function () {
+              if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Submit Request'; }
+            });
         });
       }
       if (submitAnother) {
         submitAnother.addEventListener('click', function () {
           card.classList.remove('is-submitted');
+          if (formNote) { formNote.style.color = ''; }
         });
       }
 
