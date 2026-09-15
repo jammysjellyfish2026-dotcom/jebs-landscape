@@ -560,17 +560,17 @@
     .gallery-card__location svg { color: var(--green-600); }
     .gallery-card__overlay {
       position: absolute; inset: auto 0 0 0; z-index: 2;
-      padding: 48px 18px 16px;
-      background: linear-gradient(to top, rgba(14, 38, 23, 0.94) 0%, rgba(14, 38, 23, 0.65) 60%, transparent 100%);
-      color: #fff; display: flex; align-items: flex-end; justify-content: space-between; gap: 12px;
+      padding: 36px 18px 14px;
+      background: linear-gradient(to top, rgba(14, 38, 23, 0.92) 0%, rgba(14, 38, 23, 0.5) 60%, transparent 100%);
+      color: #fff; display: flex; align-items: center; justify-content: space-between; gap: 12px;
       transition: background 0.25s ease;
     }
     .gallery-card__info h3 {
       font-family: var(--font-display); font-size: 16px; font-weight: 700;
-      color: #fff; line-height: 1.25; margin-bottom: 3px;
+      color: #fff; line-height: 1.25; margin-bottom: 0;
     }
     .gallery-card__info p {
-      font-size: 13px; color: rgba(255, 255, 255, 0.85); line-height: 1.35;
+      display: none;
     }
     .gallery-card__zoom {
       width: 36px; height: 36px; border-radius: 50%;
@@ -897,15 +897,9 @@
           <!-- Card 1 -->
           <article class="gallery-card reveal" data-category="hedges" data-title="Pristine Front Yard &amp; Sculpted Shrubs" data-location="Hoover, AL" data-desc="Symmetrical ornamental shrub shaping and manicured front lawn edging." data-full="gallery/frontyard-garage-entry-round-shrub.jpg">
             <img src="gallery/frontyard-garage-entry-round-shrub.jpg" alt="Pristine front lawn and sculpted round shrubs by Jeb's Landscape in Hoover" loading="lazy" width="1280" height="960">
-            <span class="gallery-card__badge">Hedges &amp; Shrubs</span>
-            <span class="gallery-card__location">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-              Hoover
-            </span>
             <div class="gallery-card__overlay">
               <div class="gallery-card__info">
                 <h3>Pristine Front Yard &amp; Shrubs</h3>
-                <p>Symmetrical shaping &amp; crisp edge line</p>
               </div>
               <div class="gallery-card__zoom" aria-hidden="true">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
@@ -916,15 +910,9 @@
           <!-- Card 2 -->
           <article class="gallery-card reveal" data-category="mulch" data-title="Flagstone Walkway &amp; Pine Straw" data-location="Vestavia Hills, AL" data-desc="Fresh long-needle pine straw border accentuating a natural stone stepping path." data-full="gallery/backyard-flagstone-walkway-bed.jpg">
             <img src="gallery/backyard-flagstone-walkway-bed.jpg" alt="Flagstone walkway with fresh pine straw border installed by Jeb's Landscape" loading="lazy" width="960" height="1280">
-            <span class="gallery-card__badge">Pine Straw &amp; Mulch</span>
-            <span class="gallery-card__location">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-              Vestavia Hills
-            </span>
             <div class="gallery-card__overlay">
               <div class="gallery-card__info">
                 <h3>Flagstone Walkway &amp; Pine Straw</h3>
-                <p>Natural stone path with rolled straw border</p>
               </div>
               <div class="gallery-card__zoom" aria-hidden="true">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
@@ -935,15 +923,9 @@
           <!-- Card 3 -->
           <article class="gallery-card reveal" data-category="mulch" data-title="Ornamental Tree Island Bed" data-location="Mountain Brook, AL" data-desc="Clean edge trenching and deep pine straw installation around mature focal garden trees." data-full="gallery/backyard-ornamental-tree-mulch-bed.jpg">
             <img src="gallery/backyard-ornamental-tree-mulch-bed.jpg" alt="Ornamental tree landscape bed with fresh pine straw in Mountain Brook, AL" loading="lazy" width="1280" height="960">
-            <span class="gallery-card__badge">Pine Straw &amp; Mulch</span>
-            <span class="gallery-card__location">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-              Mountain Brook
-            </span>
             <div class="gallery-card__overlay">
               <div class="gallery-card__info">
                 <h3>Ornamental Tree Island Bed</h3>
-                <p>Trenched edge with premium long-needle straw</p>
               </div>
               <div class="gallery-card__zoom" aria-hidden="true">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
@@ -954,15 +936,9 @@
           <!-- Card 4 -->
           <article class="gallery-card reveal" data-category="hedges" data-title="Flowering Shrub Bed &amp; Flowers" data-location="Hoover, AL" data-desc="Pruned decorative bushes with healthy seasonal blooms and crisp grass borders." data-full="gallery/frontyard-corner-shrubs-pink-flowers.jpg">
             <img src="gallery/frontyard-corner-shrubs-pink-flowers.jpg" alt="Flowering shrub trimming and corner bed edging in Hoover" loading="lazy" width="1280" height="960">
-            <span class="gallery-card__badge">Hedges &amp; Shrubs</span>
-            <span class="gallery-card__location">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-              Hoover
-            </span>
             <div class="gallery-card__overlay">
               <div class="gallery-card__info">
                 <h3>Corner Shrub Bed &amp; Flowers</h3>
-                <p>Hand-pruned bushes with clean mulch bed</p>
               </div>
               <div class="gallery-card__zoom" aria-hidden="true">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
@@ -973,15 +949,9 @@
           <!-- Card 5 -->
           <article class="gallery-card reveal" data-category="mowing" data-title="Patio Perimeter &amp; Turf" data-location="Hoover, AL" data-desc="Clean blade edging along paved hardscapes and lush backyard grass." data-full="gallery/backyard-hedge-bed-near-patio.jpg">
             <img src="gallery/backyard-hedge-bed-near-patio.jpg" alt="Backyard patio perimeter and manicured lawn care by Jeb's Landscape" loading="lazy" width="1280" height="960">
-            <span class="gallery-card__badge">Mowing &amp; Edging</span>
-            <span class="gallery-card__location">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-              Hoover
-            </span>
             <div class="gallery-card__overlay">
               <div class="gallery-card__info">
                 <h3>Patio Perimeter &amp; Turf</h3>
-                <p>Blade-edged concrete &amp; manicured lawn</p>
               </div>
               <div class="gallery-card__zoom" aria-hidden="true">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
@@ -992,15 +962,9 @@
           <!-- Card 6 -->
           <article class="gallery-card reveal" data-category="mowing" data-title="Crisp Sidewalk &amp; Curve Edging" data-location="Vestavia Hills, AL" data-desc="Razor-sharp vertical trench edging around driveway curves and sidewalk islands." data-full="gallery/frontyard-purple-shrub-sidewalk-circle.jpg">
             <img src="gallery/frontyard-purple-shrub-sidewalk-circle.jpg" alt="Razor-sharp vertical sidewalk edging and curb appeal in Vestavia Hills" loading="lazy" width="1280" height="960">
-            <span class="gallery-card__badge">Mowing &amp; Edging</span>
-            <span class="gallery-card__location">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-              Vestavia Hills
-            </span>
             <div class="gallery-card__overlay">
               <div class="gallery-card__info">
                 <h3>Crisp Sidewalk &amp; Curve Edging</h3>
-                <p>Vertical blade edge defining lawn and walkways</p>
               </div>
               <div class="gallery-card__zoom" aria-hidden="true">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
@@ -1011,15 +975,9 @@
           <!-- Card 7 -->
           <article class="gallery-card reveal" data-category="cleanups" data-title="Garden Bed Revitalization" data-location="Hoover, AL" data-desc="Active bed clearing, old weed removal, and fresh mulch transport." data-full="gallery/backyard-mulch-path-wheelbarrow.jpg">
             <img src="gallery/backyard-mulch-path-wheelbarrow.jpg" alt="Active garden bed mulch installation and yard cleanup in Hoover" loading="lazy" width="960" height="1280">
-            <span class="gallery-card__badge">Seasonal Cleanups</span>
-            <span class="gallery-card__location">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-              Hoover
-            </span>
             <div class="gallery-card__overlay">
               <div class="gallery-card__info">
                 <h3>Garden Bed Revitalization</h3>
-                <p>Thorough cleanup, edging &amp; fresh mulch</p>
               </div>
               <div class="gallery-card__zoom" aria-hidden="true">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
@@ -1030,15 +988,9 @@
           <!-- Card 8 -->
           <article class="gallery-card reveal" data-category="hedges" data-title="Foundation Bed Trimming" data-location="Mountain Brook, AL" data-desc="Hand-shaped matching shrubs framing garage and entry foundation." data-full="gallery/frontyard-garage-twin-shrubs.jpg">
             <img src="gallery/frontyard-garage-twin-shrubs.jpg" alt="Matching foundation shrubs trimmed to perfection in Mountain Brook" loading="lazy" width="1280" height="960">
-            <span class="gallery-card__badge">Hedges &amp; Shrubs</span>
-            <span class="gallery-card__location">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-              Mountain Brook
-            </span>
             <div class="gallery-card__overlay">
               <div class="gallery-card__info">
                 <h3>Foundation Bed Trimming</h3>
-                <p>Symmetrical shaping &amp; healthy foliage</p>
               </div>
               <div class="gallery-card__zoom" aria-hidden="true">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
@@ -1049,15 +1001,9 @@
           <!-- Card 9 -->
           <article class="gallery-card reveal" data-category="mowing" data-title="Backyard Oasis &amp; Porch Edging" data-location="Hoover, AL" data-desc="Weekly mowing and detailed trimming right up to outdoor living spaces." data-full="gallery/backyard-screened-porch-patio.jpg">
             <img src="gallery/backyard-screened-porch-patio.jpg" alt="Backyard lawn mowing and screened porch landscaping by Jeb's Landscape" loading="lazy" width="1280" height="960">
-            <span class="gallery-card__badge">Mowing &amp; Edging</span>
-            <span class="gallery-card__location">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-              Hoover
-            </span>
             <div class="gallery-card__overlay">
               <div class="gallery-card__info">
                 <h3>Backyard Oasis &amp; Porch Edging</h3>
-                <p>Weekly precision mow &amp; hardscape trim</p>
               </div>
               <div class="gallery-card__zoom" aria-hidden="true">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
@@ -1068,15 +1014,9 @@
           <!-- Card 10 -->
           <article class="gallery-card reveal" data-category="mulch" data-title="Decorative Tree Ring &amp; Bed" data-location="Hoover, AL" data-desc="Neatly defined mulch ring protecting root systems with decorative garden placement." data-full="gallery/frontyard-two-trunk-tree-duck-statue.jpg">
             <img src="gallery/frontyard-two-trunk-tree-duck-statue.jpg" alt="Decorative tree ring with fresh dark mulch and garden statue in Hoover" loading="lazy" width="1280" height="960">
-            <span class="gallery-card__badge">Pine Straw &amp; Mulch</span>
-            <span class="gallery-card__location">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-              Hoover
-            </span>
             <div class="gallery-card__overlay">
               <div class="gallery-card__info">
                 <h3>Decorative Tree Ring &amp; Bed</h3>
-                <p>Deep root-protective mulch trench &amp; edging</p>
               </div>
               <div class="gallery-card__zoom" aria-hidden="true">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
@@ -1087,15 +1027,9 @@
           <!-- Card 11 -->
           <article class="gallery-card reveal" data-category="cleanups" data-title="Side Yard &amp; Foundation Clearing" data-location="Hoover, AL" data-desc="Clear walkways, weed-free gravel/mulch around HVAC units, and clean turf lines." data-full="gallery/sideyard-ac-units-foundation-bed.jpg">
             <img src="gallery/sideyard-ac-units-foundation-bed.jpg" alt="Side yard clearing and clean foundation bed around AC units in Hoover" loading="lazy" width="1280" height="960">
-            <span class="gallery-card__badge">Seasonal Cleanups</span>
-            <span class="gallery-card__location">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-              Hoover
-            </span>
             <div class="gallery-card__overlay">
               <div class="gallery-card__info">
                 <h3>Side Yard &amp; Foundation Clearing</h3>
-                <p>Clean utility access, weed clearing &amp; edge</p>
               </div>
               <div class="gallery-card__zoom" aria-hidden="true">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
