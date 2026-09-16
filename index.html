@@ -544,6 +544,52 @@
       background: #fff; transform: scale(1); color: var(--green-700);
     }
 
+    /* ---------- Gallery Placeholders (Pending Client Approval) ---------- */
+    .gallery-placeholder-card {
+      position: relative; border-radius: var(--radius-lg);
+      background: linear-gradient(180deg, #ffffff 0%, var(--surface) 100%);
+      border: 2px dashed rgba(60, 163, 98, 0.35);
+      box-shadow: var(--shadow-sm); aspect-ratio: 4 / 3;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 24px;
+      transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .gallery-placeholder-card:hover {
+      border-color: var(--green-600);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      background: #ffffff;
+    }
+    .gallery-placeholder__inner {
+      display: flex; flex-direction: column; align-items: center;
+      gap: 10px; max-width: 240px;
+    }
+    .gallery-placeholder__icon {
+      width: 52px; height: 52px; border-radius: 50%;
+      background: var(--green-50); color: var(--green-700);
+      border: 1px solid rgba(60, 163, 98, 0.2);
+      display: flex; align-items: center; justify-content: center;
+      transition: transform 0.25s ease, background 0.25s ease;
+    }
+    .gallery-placeholder-card:hover .gallery-placeholder__icon {
+      transform: scale(1.06);
+      background: var(--green-100);
+      color: var(--green-800);
+    }
+    .gallery-placeholder__badge {
+      display: inline-block; font-size: 11px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      color: var(--green-800); background: rgba(60, 163, 98, 0.12);
+      padding: 3px 10px; border-radius: 999px;
+    }
+    .gallery-placeholder__title {
+      font-size: 18px; font-weight: 700; color: var(--dark);
+      letter-spacing: -0.01em; margin: 0;
+    }
+    .gallery-placeholder__text {
+      font-size: 13px; color: var(--muted); line-height: 1.4; margin: 0;
+    }
+
     /* ---------- Lightbox Modal ---------- */
     .lightbox {
       position: fixed; inset: 0; z-index: 1000;
@@ -834,7 +880,106 @@
 
         <!-- Gallery grid -->
         <div class="gallery-grid" id="galleryGrid">
-          <!-- Card 1 -->
+          <!-- Placeholder Card 1 -->
+          <article class="gallery-placeholder-card reveal">
+            <div class="gallery-placeholder__inner">
+              <div class="gallery-placeholder__icon" aria-hidden="true">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                  <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                  <polyline points="21 15 16 10 5 21"></polyline>
+                </svg>
+              </div>
+              <span class="gallery-placeholder__badge">Coming Soon</span>
+              <h3 class="gallery-placeholder__title">Project Photos</h3>
+              <p class="gallery-placeholder__text">Pending client approval</p>
+            </div>
+          </article>
+
+          <!-- Placeholder Card 2 -->
+          <article class="gallery-placeholder-card reveal">
+            <div class="gallery-placeholder__inner">
+              <div class="gallery-placeholder__icon" aria-hidden="true">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                  <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                  <polyline points="21 15 16 10 5 21"></polyline>
+                </svg>
+              </div>
+              <span class="gallery-placeholder__badge">Coming Soon</span>
+              <h3 class="gallery-placeholder__title">Project Photos</h3>
+              <p class="gallery-placeholder__text">Pending client approval</p>
+            </div>
+          </article>
+
+          <!-- Placeholder Card 3 -->
+          <article class="gallery-placeholder-card reveal">
+            <div class="gallery-placeholder__inner">
+              <div class="gallery-placeholder__icon" aria-hidden="true">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                  <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                  <polyline points="21 15 16 10 5 21"></polyline>
+                </svg>
+              </div>
+              <span class="gallery-placeholder__badge">Coming Soon</span>
+              <h3 class="gallery-placeholder__title">Project Photos</h3>
+              <p class="gallery-placeholder__text">Pending client approval</p>
+            </div>
+          </article>
+
+          <!-- Placeholder Card 4 -->
+          <article class="gallery-placeholder-card reveal">
+            <div class="gallery-placeholder__inner">
+              <div class="gallery-placeholder__icon" aria-hidden="true">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                  <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                  <polyline points="21 15 16 10 5 21"></polyline>
+                </svg>
+              </div>
+              <span class="gallery-placeholder__badge">Coming Soon</span>
+              <h3 class="gallery-placeholder__title">Project Photos</h3>
+              <p class="gallery-placeholder__text">Pending client approval</p>
+            </div>
+          </article>
+
+          <!-- Placeholder Card 5 -->
+          <article class="gallery-placeholder-card reveal">
+            <div class="gallery-placeholder__inner">
+              <div class="gallery-placeholder__icon" aria-hidden="true">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                  <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                  <polyline points="21 15 16 10 5 21"></polyline>
+                </svg>
+              </div>
+              <span class="gallery-placeholder__badge">Coming Soon</span>
+              <h3 class="gallery-placeholder__title">Project Photos</h3>
+              <p class="gallery-placeholder__text">Pending client approval</p>
+            </div>
+          </article>
+
+          <!-- Placeholder Card 6 -->
+          <article class="gallery-placeholder-card reveal">
+            <div class="gallery-placeholder__inner">
+              <div class="gallery-placeholder__icon" aria-hidden="true">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                  <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                  <polyline points="21 15 16 10 5 21"></polyline>
+                </svg>
+              </div>
+              <span class="gallery-placeholder__badge">Coming Soon</span>
+              <h3 class="gallery-placeholder__title">Project Photos</h3>
+              <p class="gallery-placeholder__text">Pending client approval</p>
+            </div>
+          </article>
+        </div>
+
+        <!-- PENDING CLIENT APPROVAL: Original 11 project photos preserved for reactivation -->
+        <!--
+        <div class="gallery-grid" id="galleryGridOriginal">
           <article class="gallery-card reveal" data-category="hedges" data-full="gallery/frontyard-garage-entry-round-shrub.jpg">
             <img src="gallery/frontyard-garage-entry-round-shrub.jpg" alt="Pristine front lawn and sculpted round shrubs by Jeb's Landscape in Hoover" loading="lazy" width="1280" height="960">
             <div class="gallery-card__overlay">
@@ -844,7 +989,6 @@
             </div>
           </article>
 
-          <!-- Card 2 -->
           <article class="gallery-card reveal" data-category="mulch" data-full="gallery/backyard-flagstone-walkway-bed.jpg">
             <img src="gallery/backyard-flagstone-walkway-bed.jpg" alt="Flagstone walkway with fresh pine straw border installed by Jeb's Landscape" loading="lazy" width="960" height="1280">
             <div class="gallery-card__overlay">
@@ -854,7 +998,6 @@
             </div>
           </article>
 
-          <!-- Card 3 -->
           <article class="gallery-card reveal" data-category="mulch" data-full="gallery/backyard-ornamental-tree-mulch-bed.jpg">
             <img src="gallery/backyard-ornamental-tree-mulch-bed.jpg" alt="Ornamental tree landscape bed with fresh pine straw in Mountain Brook, AL" loading="lazy" width="1280" height="960">
             <div class="gallery-card__overlay">
@@ -864,7 +1007,6 @@
             </div>
           </article>
 
-          <!-- Card 4 -->
           <article class="gallery-card reveal" data-category="hedges" data-full="gallery/frontyard-corner-shrubs-pink-flowers.jpg">
             <img src="gallery/frontyard-corner-shrubs-pink-flowers.jpg" alt="Flowering shrub trimming and corner bed edging in Hoover" loading="lazy" width="1280" height="960">
             <div class="gallery-card__overlay">
@@ -874,7 +1016,6 @@
             </div>
           </article>
 
-          <!-- Card 5 -->
           <article class="gallery-card reveal" data-category="mowing" data-full="gallery/backyard-hedge-bed-near-patio.jpg">
             <img src="gallery/backyard-hedge-bed-near-patio.jpg" alt="Backyard patio perimeter and manicured lawn care by Jeb's Landscape" loading="lazy" width="1280" height="960">
             <div class="gallery-card__overlay">
@@ -884,7 +1025,6 @@
             </div>
           </article>
 
-          <!-- Card 6 -->
           <article class="gallery-card reveal" data-category="mowing" data-full="gallery/frontyard-purple-shrub-sidewalk-circle.jpg">
             <img src="gallery/frontyard-purple-shrub-sidewalk-circle.jpg" alt="Razor-sharp vertical sidewalk edging and curb appeal in Vestavia Hills" loading="lazy" width="1280" height="960">
             <div class="gallery-card__overlay">
@@ -894,7 +1034,6 @@
             </div>
           </article>
 
-          <!-- Card 7 -->
           <article class="gallery-card reveal" data-category="cleanups" data-full="gallery/backyard-mulch-path-wheelbarrow.jpg">
             <img src="gallery/backyard-mulch-path-wheelbarrow.jpg" alt="Active garden bed mulch installation and yard cleanup in Hoover" loading="lazy" width="960" height="1280">
             <div class="gallery-card__overlay">
@@ -904,7 +1043,6 @@
             </div>
           </article>
 
-          <!-- Card 8 -->
           <article class="gallery-card reveal" data-category="hedges" data-full="gallery/frontyard-garage-twin-shrubs.jpg">
             <img src="gallery/frontyard-garage-twin-shrubs.jpg" alt="Matching foundation shrubs trimmed to perfection in Mountain Brook" loading="lazy" width="1280" height="960">
             <div class="gallery-card__overlay">
@@ -914,7 +1052,6 @@
             </div>
           </article>
 
-          <!-- Card 9 -->
           <article class="gallery-card reveal" data-category="mowing" data-full="gallery/backyard-screened-porch-patio.jpg">
             <img src="gallery/backyard-screened-porch-patio.jpg" alt="Backyard lawn mowing and screened porch landscaping by Jeb's Landscape" loading="lazy" width="1280" height="960">
             <div class="gallery-card__overlay">
@@ -924,7 +1061,6 @@
             </div>
           </article>
 
-          <!-- Card 10 -->
           <article class="gallery-card reveal" data-category="mulch" data-full="gallery/frontyard-two-trunk-tree-duck-statue.jpg">
             <img src="gallery/frontyard-two-trunk-tree-duck-statue.jpg" alt="Decorative tree ring with fresh dark mulch and garden statue in Hoover" loading="lazy" width="1280" height="960">
             <div class="gallery-card__overlay">
@@ -934,7 +1070,6 @@
             </div>
           </article>
 
-          <!-- Card 11 -->
           <article class="gallery-card reveal" data-category="cleanups" data-full="gallery/sideyard-ac-units-foundation-bed.jpg">
             <img src="gallery/sideyard-ac-units-foundation-bed.jpg" alt="Side yard clearing and clean foundation bed around AC units in Hoover" loading="lazy" width="1280" height="960">
             <div class="gallery-card__overlay">
@@ -944,6 +1079,7 @@
             </div>
           </article>
         </div>
+        -->
       </div>
     </section>
 
