@@ -492,31 +492,7 @@
       display: flex; align-items: center; justify-content: center; color: var(--muted);
       transition: color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
     }
-    /* ---------- Gallery ---------- */
-    .gallery-filter {
-      display: flex; justify-content: center; flex-wrap: wrap; gap: 10px;
-      margin: -20px auto 44px; max-width: 860px;
-    }
-    .filter-btn {
-      appearance: none; -webkit-appearance: none;
-      background: var(--surface); color: var(--muted);
-      border: 1px solid var(--line); border-radius: 999px;
-      padding: 10px 20px; font-size: 14px; font-weight: 600;
-      cursor: pointer; transition: all 0.2s ease;
-      display: inline-flex; align-items: center; gap: 8px;
-    }
-    .filter-btn:hover {
-      color: var(--green-800); border-color: var(--green-500);
-      background: var(--green-50);
-    }
-    .filter-btn.active {
-      background: var(--green-800); color: #fff; border-color: var(--green-800);
-      box-shadow: 0 4px 14px rgba(30, 90, 51, 0.25);
-    }
-    .filter-btn .filter-count {
-      font-size: 12px; opacity: 0.75; font-weight: 500;
-    }
-    .filter-btn.active .filter-count { opacity: 0.9; }
+
 
     .gallery-grid {
       display: grid;
@@ -677,7 +653,6 @@
       .cta { padding: 76px 0; }
       .services-grid { grid-template-columns: 1fr; }
       .gallery-grid { grid-template-columns: 1fr; gap: 18px; }
-      .filter-btn { padding: 8px 14px; font-size: 13px; }
       .lightbox { padding: 12px; }
       .lightbox__close { top: -42px; width: 36px; height: 36px; }
       .lightbox__nav { width: 38px; height: 38px; }
@@ -857,24 +832,6 @@
           <p>Every photo below shows real work completed by Jeb’s crew for homeowners in Hoover, Vestavia Hills, and Mountain Brook.</p>
         </div>
 
-        <!-- Filter tabs -->
-        <div class="gallery-filter reveal" role="tablist" aria-label="Filter projects by service">
-          <button type="button" class="filter-btn active" data-filter="all">
-            All Projects <span class="filter-count">(11)</span>
-          </button>
-          <button type="button" class="filter-btn" data-filter="mowing">
-            Mowing &amp; Edging <span class="filter-count">(3)</span>
-          </button>
-          <button type="button" class="filter-btn" data-filter="mulch">
-            Pine Straw &amp; Mulch <span class="filter-count">(3)</span>
-          </button>
-          <button type="button" class="filter-btn" data-filter="hedges">
-            Hedges &amp; Shrubs <span class="filter-count">(3)</span>
-          </button>
-          <button type="button" class="filter-btn" data-filter="cleanups">
-            Seasonal Cleanups <span class="filter-count">(2)</span>
-          </button>
-        </div>
 
         <!-- Gallery grid -->
         <div class="gallery-grid" id="galleryGrid">
@@ -1363,8 +1320,7 @@
         revealEls.forEach(function (el) { el.classList.add('is-visible'); });
       }
 
-      // ---------- Gallery filtering & Lightbox ----------
-      var filterBtns = document.querySelectorAll('.filter-btn');
+      // ---------- Gallery Lightbox ----------
       var galleryCards = Array.prototype.slice.call(document.querySelectorAll('.gallery-card'));
       var lightbox = document.getElementById('gallery-lightbox');
       var lightboxImg = document.getElementById('lightbox-img');
@@ -1376,26 +1332,7 @@
       var currentIdx = 0;
       var activeCards = galleryCards;
 
-      if (filterBtns.length && galleryCards.length) {
-        filterBtns.forEach(function (btn) {
-          btn.addEventListener('click', function () {
-            var filter = btn.getAttribute('data-filter');
-            filterBtns.forEach(function (b) { b.classList.remove('active'); });
-            btn.classList.add('active');
-
-            activeCards = [];
-            galleryCards.forEach(function (card) {
-              var cat = card.getAttribute('data-category');
-              if (filter === 'all' || cat === filter) {
-                card.classList.remove('is-hidden');
-                activeCards.push(card);
-              } else {
-                card.classList.add('is-hidden');
-              }
-            });
-          });
-        });
-
+      if (galleryCards.length) {
         var showPhoto = function (idx) {
           if (!activeCards.length) return;
           if (idx < 0) idx = activeCards.length - 1;
