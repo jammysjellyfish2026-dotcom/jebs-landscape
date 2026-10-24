@@ -351,6 +351,44 @@
       background: radial-gradient(circle at 30% 30%, rgba(60, 163, 98, 0.16), transparent 70%);
       z-index: -1;
     }
+    .about-vision {
+      margin: 22px 0 26px;
+      padding: 22px 24px;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--green-600);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+    }
+    .about-vision__header {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 11.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--green-800);
+      background: #ffffff;
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+      border: 1px solid var(--line);
+    }
+    .about-vision__header svg { color: var(--green-600); }
+    .about-vision__lead {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--green-950);
+      line-height: 1.55;
+      margin-bottom: 10px;
+    }
+    .about-vision__body {
+      font-size: 14.5px;
+      color: var(--muted);
+      line-height: 1.65;
+      margin: 0;
+    }
     .about-check { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 12px 20px; margin: 26px 0 34px; }
     .about-check li { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; font-weight: 500; color: var(--ink); }
     .about-check svg { color: var(--green-600); flex-shrink: 0; margin-top: 3px; }
@@ -705,6 +743,7 @@
       .lightbox__nav--prev { left: 8px; }
       .lightbox__nav--next { right: 8px; }
       .lightbox__caption { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .about-vision { padding: 18px 16px; }
       .about-check { grid-template-columns: 1fr; }
       .stats { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; gap: 0; }
@@ -937,7 +976,14 @@
         <div class="about-copy reveal" style="transition-delay: 0.1s;">
           <span class="kicker">Why Jeb's</span>
           <h2 class="section-head" style="margin-bottom: 0;">Lawn care that shows up — on time, every time.</h2>
-          <p style="color: var(--muted); font-size: 17px; margin-top: 16px;">Locally owned and operated in Hoover since 2020. We built our reputation on the details other companies skip: crisp edges, blown-off driveways, and a crew that knows your property like their own.</p>
+          <div class="about-vision">
+            <div class="about-vision__header">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <span>Our Vision</span>
+            </div>
+            <p class="about-vision__lead">We're building a locally owned company our community can depend on — one known for consistency, integrity, and quality work.</p>
+            <p class="about-vision__body">We treat customers the way we live at home: we keep our word, work hard, and take pride in what we do. We show up, do what we say we'll do, leave every property better than we found it, and earn a reputation as neighbors you can trust.</p>
+          </div>
           <ul class="about-check">
             <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Same crew &amp; same day</li>
             <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Text updates &amp; photos</li>
